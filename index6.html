@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>매스 아트: 순환 소수 패턴</title>
+    <link rel="stylesheet" href="style3.css">
+    <style>
+        .hidden {display:none;}
+        .active {display:block;}
+        .image-thumb { width: 180px; height: 120px; border: 1px solid #ccc; margin: 5px; object-fit: contain; }
+        #imageSelection label { display: block; margin-bottom: 10px; }
+        .guide-msg {font-size:0.95em;color:#356;font-style:italic;margin:12px 0;}
+    </style>
+</head>
+<body>
+<div class="container" id="appContainer">
+    <!-- 설명 페이지 -->
+    <div id="explanationPage" class="page active">
+        <h1>✨ 순환 소수란? ✨</h1>
+        <p>분수는 위 숫자(분자)와 아래 숫자(분모)로 이루어져 있어요. 이 분수를 소수로 바꿀 때, 소수점 아래에 똑같은 숫자 배열이 계속해서 반복되는 경우가 있답니다. 예를 들면:</p>
+            <ul>
+                <li><strong>1 나누기 3</strong> 은 <strong>0.3333...</strong> 이에요. 숫자 '3'이 계속 반복되죠?</li>
+                <li><strong>1 나누기 7</strong> 은 <strong>0.142857142857...</strong> 이에요. '142857'이라는 여섯 개의 숫자가 계속 반복돼요!</li>
+            </ul>
+        <p>이렇게 계속 반복되는 숫자 배열을 <strong>순환마디</strong>라고 불러요. 모든 분수가 순환 마디를 가지는 건 아니지만, 몇몇 분수들은 아주 멋진 순환 마디를 가지고 있답니다. 특히 분모(아래 숫자)에 2나 5가 아닌 다른 소수(예: 3, 7, 11, 13 등)가 있다면 순환 마디가 생길 가능성이 높아요!</p>
+        <p>테스트하려는 분수를 입력해서 아래 단계를 따라가면 이미지로 볼 수 있어요. 여러 번 다른 분수를 시도해도 됩니다.</p>
+        <button id="toTestPageBtn">테스트 페이지로 가기</button>
+    </div>
+    <!-- 테스트 페이지 -->
+    <div id="testPage" class="page hidden">
+        <h2>🖼️ 국립광주과학관 순환 소수 아트 만들기!</h2>
+        <p>아래 예시 중에서 마음에 드는 분모를 가진 분수를 골라보세요. 어떤 분수의 순환 마디를 색깔로 보고 싶으신가요?</p>
+                <div class="examples">
+                    <p><strong>어떤 분수를 골라볼까요? 아래 예시를 참고하여 분자와 분모를 입력해 보세요!</strong></p>
+                    <ul>
+                        <li><code>1/3</code> = 0.<span class="repeating-decimal">3</span>333...<br>
+                            순환 마디: <span style="color: yellow; font-weight: bold;">3</span> (노랑)
+                        </li>
+                        <li><code>1/7</code> = 0.<span class="repeating-decimal">142857</span>142857...<br>
+                            순환 마디: <span style="color: red; font-weight: bold;">1</span> (빨강), <span style="color: lime; font-weight: bold;">4</span> (초록), <span style="color: orange; font-weight: bold;">2</span> (주황), <span style="color: gray; font-weight: bold;">8</span> (회색), <span style="color: blue; font-weight: bold;">5</span> (파랑), <span style="color: purple; font-weight: bold;">7</span> (보라)
+                        </li>
+                        <li><code>2/9</code> = 0.<span class="repeating-decimal">2</span>222...<br>
+                            순환 마디: <span style="color: orange; font-weight: bold;">2</span> (주황)
+                        </li>
+                        <li><code>5/11</code> = 0.<span class="repeating-decimal">45</span>4545...<br>
+                            순환 마디: <span style="color: lime; font-weight: bold;">4</span> (초록), <span style="color: blue; font-weight: bold;">5</span> (파랑)
+                        </li>
+                        <li><code>1/13</code> = 0.<span class="repeating-decimal">076923</span>076923...<br>
+                            순환 마디: <span style="color: black; font-weight: bold;">0</span> (검정), <span style="color: purple; font-weight: bold;">7</span> (보라), <span style="color: indigo; font-weight: bold;">6</span> (남색), <span style="color: white; font-weight: bold;">9</span> (흰색), <span style="color: orange; font-weight: bold;">2</span> (주황), <span style="color: yellow; font-weight: bold;">3</span> (노랑)
+                        </li>
+                        <li><code>3/14</code> = 0.2<span class="repeating-decimal">142857</span>142857...<br>
+                            순환 마디: <span style="color: red; font-weight: bold;">1</span> (빨강), <span style="color: lime; font-weight: bold;">4</span> (초록), <span style="color: orange; font-weight: bold;">2</span> (주황), <span style="color: gray; font-weight: bold;">8</span> (회색), <span style="color: blue; font-weight: bold;">5</span> (파랑), <span style="color: purple; font-weight: bold;">7</span> (보라) <br>
+                           <small>(소수점 첫째 자리는 순환 마디에 포함되지 않아요.)</small>
+                        </li>
+                        <li><code>1/17</code> = 0.<span class="repeating-decimal">0588235294117647</span>...<br>
+                            순환 마디: <span style="color: black; font-weight: bold;">0</span> (검정), <span style="color: blue; font-weight: bold;">5</span> (파랑), <span style="color: gray; font-weight: bold;">8</span> (회색), <span style="color: gray; font-weight: bold;">8</span> (회색), <span style="color: orange; font-weight: bold;">2</span> (주황), <span style="color: yellow; font-weight: bold;">3</span> (노랑), <span style="color: blue; font-weight: bold;">5</span> (파랑), <span style="color: orange; font-weight: bold;">2</span> (주황), <span style="color: white; font-weight: bold;">9</span> (흰색), <span style="color: lime; font-weight: bold;">4</span> (초록), <span style="color: red; font-weight: bold;">1</span> (빨강), <span style="color: red; font-weight: bold;">1</span> (빨강), <span style="color: purple; font-weight: bold;">7</span> (보라), <span style="color: indigo; font-weight: bold;">6</span> (남색), <span style="color: lime; font-weight: bold;">4</span> (초록), <span style="color: purple; font-weight: bold;">7</span> (보라)
+                        </li>
+                        <li><code>1/19</code> = 0.<span class="repeating-decimal">052631578947368421</span>...<br>
+                            순환 마디: 18자리의 긴 순환 마디로, 다양한 색상이 나타날 거예요! 직접 입력해서 확인해 보세요!
+                        </li>
+                        </ul>
+                </div>
+        <div class="input-fields">
+            <label for="numerator">분자 (위 숫자):</label>
+            <input type="number" id="numerator" value="1" min="1">
+            <label for="denominator">분모 (아래 숫자):</label>
+            <input type="number" id="denominator" value="7" min="1">
+            <button id="generateBtn">✨ 결과 보기! ✨</button>
+        </div>
+        <p id="testPageMessage" class="message"></p>
+        <button id="toExplanationPageBtn">설명 페이지로 돌아가기</button>
+    </div>
+    <!-- 결과 페이지 -->
+    <div id="resultPage" class="page hidden">
+        <h2>✨ 결과 ✨</h2>
+        <p class="guide-msg">
+            원하는 이미지를 <b>한 개만</b> 선택하면 선택한 파일이 다운로드됩니다.<br>
+            <b>여러 개</b>를 선택하면 선택된 이미지들이 <b>가로로 병합된 한 파일</b>로 다운로드 됩니다.<br>
+            여러 분수를 시도할수록 아래 미리보기가 계속 추가됩니다!
+        </p>
+        <p id="resultDisplayInfo" class="message"></p>
+        <canvas id="mathArtCanvas" width="720" height="480" style="border:1px solid #bbb; display:block; margin:0 auto 10px;"></canvas>
+        <div id="imageSelection"></div>
+        <button id="downloadSelectedBtn">✅ 선택한 이미지 다운로드</button>
+        <button id="toTestPageBtn2">다시 시도하기</button>
+    </div>
+</div>
+<script src="script4.js"></script>
+</body>
+</html>

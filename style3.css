@@ -1,0 +1,90 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+}
+
+.page {
+    display: none; /* 모든 페이지 기본적으로 숨김 */
+}
+
+.page.active {
+    display: block; /* 활성 페이지만 보이도록 */
+}
+
+h1, h2 {
+    color: #34495e;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 25px;
+}
+
+.input-fields {
+    margin-bottom: 20px;
+}
+
+.input-fields label {
+    font-weight: bold;
+}
+
+.input-fields input[type="number"] {
+    padding: 10px;
+    margin-top: 5px;
+    width: 100%; /* 입력 필드 너비 100%로 설정 */
+    max-width: 200px; /* 최대 너비 */
+}
+
+.input-fields button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-fields button:hover {
+    background-color: #2980b9;
+}
+
+.message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #eaf6fd;
+    color: #2980b9;
+    font-weight: bold;
+}
+
+canvas {
+    border: 2px solid #bdc3c7;
+    background-color: #ecf0f1;
+    display: block; /* 중앙정렬 및 비율 유지 */
+    margin: 20px auto 0;
+}
+
+/* 모바일에서 개선된 레이아웃 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin-top: 10px;
+    }
+}
